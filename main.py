@@ -12,9 +12,9 @@ from tqdm import tqdm
 if __name__ == '__main__': 
     #build the computation graph
     g = Graph()
-    print "\n###Computation graph for QANet loaded###\n"
+    print ("\n###Computation graph for QANet loaded###\n")
     
-    print "\n###Training started###\n"
+    print ("\n###Training started###\n")
     #creating training helper
     sv = tf.train.Supervisor(graph=g.graph, logdir=param.logdir)        
     #launch the computation graph in a session
@@ -31,4 +31,4 @@ if __name__ == '__main__':
             gs = sess.run(g.global_step)
             #saving
             sv.saver.save(sess, param.logdir + '/model_epoch_%02d_gs_%d' % (epoch, gs))
-    print "\n###Training complete###\n"                                
+    print ("\n###Training complete###\n")                                

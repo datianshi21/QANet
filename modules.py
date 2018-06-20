@@ -169,8 +169,8 @@ def multi_head_attention(queries, keys, values, num_heads=8, scope="multi_head_a
         #project using different learned linear projections
         #dimensions=[h, B, N, d/h]
         Q_s = [tf.layers.dense(q, dims, activation=tf.nn.relu) for q in Q_s]
-        K_s = [tf.layers.dense(q, dims, activation=tf.nn.relu) for k in K_s]
-        V_s = [tf.layers.dense(q, dims, activation=tf.nn.relu) for v in V_s]
+        K_s = [tf.layers.dense(k, dims, activation=tf.nn.relu) for k in K_s]
+        V_s = [tf.layers.dense(v, dims, activation=tf.nn.relu) for v in V_s]
         #concatenate different projections for parallel scaled dot product attention
         #dimensions=[h*B, N, d/h]
         Q_c = tf.concat(Q_s, axis=0)
